@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>CryptoArt Paper Wallet Generator</title>
+<meta name="description" content="A lightweight, client-side, reliable, fast, open-source universal paper wallet generator supporting almost every major cryptocurrency">
+<meta name="keywords" content="minimal, reliable, fast, universal, paper, wallet, generator, offline, pwall, cryptoart, cryptocurrency">
+<link rel="shortcut icon" href="../favicon.ico">
+<style>
+.container {
+  min-height: 160px;
+  width: 480px;
+  display: inline-flex;
+  justify-content: center;
+  border: 3px solid black;
+}
+.columns {
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
+.Aligner-item {
+  max-width: 60%;
+  word-wrap: break-word;
+  font-size: 1.2rem;
+  min-height: 96px;
+  border: 3px solid white;
+}
+.Aligner-item2 {
+  max-width: 60%;
+  word-wrap: break-word;
+  font-size: 1.2rem;
+  min-height: 130px;
+}
+.columns.leftThing {
+  background-color: black;
+  min-width: 33%;
+}
+#content {
+  min-width: 33%;
+}
+.secretKey {
+  font-family: monospace;
+  font-size: 1rem;
+  margin : 0;
+  min-height: 130px;
+}
+#verticalText {
+  width: 1%;
+  transform: rotate(-90deg);
+  margin-right: 40px;
+  margin-top: 80px;
+}
+#rightThing {
+  min-width: 33%;
+}
+h5 {
+  text-align: center;
+  margin: 0;
+}
+label {
+  display: inline-block;
+  width: 200px;
+  vertical-align: top;
+}
+input select {
+  width: 200px;
+  margin-bottom: 5px;
+}
+</style>
+</head>
+<body>
+<label for="color">Select the color :</label><input id="color" name="color" type="color" autocomplete="off"><br>
+<label for="coin">Select your cryptocurrency :</label><select id="coin" onchange="generateWallet()" autocomplete="off">
+  <option selected="selected"></option>
+  <option>0x</option>
+  <option>Aeternity</option>
+  <option>Bitcoin</option>
+  <option>Bitcoin Cash</option>
+  <option>Dash</option>
+  <option>Dogecoin</option>
+  <option>Ethereum</option>
+  <option>EOS</option>
+  <option>Litecoin</option>
+  <option>Qtum</option>
+  <option>Ripple</option>
+  <option>Stellar</option>
+  <option>Tron</option>
+  <option>VeChain</option>
+  <option>Zcash</option>
+  <option>Zilliqa</option>
+</select><br>
+<div class="noprint"><button class="button button2" onclick="generateWallet()">Generate</button>
+<br>
+<main id="main" style="display:none">
+  <div class="container">
+    <div class="columns leftThing">
+      <div class="Aligner-item"><div id="public_qr0"></div></div>
+      <div id="public0" hidden>Generating</div>
+    </div>
+    <div class="columns" id="content">
+      <div id="verticalText">Cryptoart.com</div>
+      <div class="Aligner-item">
+        <div class= "secretKey" id="secret0">Generating...</div>
+      </div>
+    </div>
+    <div class="columns" id="rightThing">
+      <div class="Aligner-item2">
+        <h5>Private Key</h5>
+        <div id="secret_qr0"></div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="columns leftThing">
+      <div class="Aligner-item"><div id="public_qr1"></div></div>
+      <div id="public1" hidden>Generating</div>
+    </div>
+    <div class="columns" id="content">
+      <div id="verticalText">Cryptoart.com</div>
+      <div class="Aligner-item">
+        <div class= "secretKey" id="secret1">Generating...</div>
+      </div>
+    </div>
+    <div class="columns" id="rightThing">
+      <div class="Aligner-item2">
+        <h5>Private Key</h5>
+        <div id="secret_qr1"></div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="columns leftThing">
+      <div class="Aligner-item"><div id="public_qr2"></div></div>
+      <div id="public2" hidden>Generating</div>
+    </div>
+    <div class="columns" id="content">
+      <div id="verticalText">Cryptoart.com</div>
+      <div class="Aligner-item">
+        <div class= "secretKey" id="secret2">Generating...</div>
+      </div>
+    </div>
+    <div class="columns" id="rightThing">
+      <div class="Aligner-item2">
+        <h5>Private Key</h5>
+        <div id="secret_qr2"></div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="columns leftThing">
+      <div class="Aligner-item"><div id="public_qr3"></div></div>
+      <div id="public3" hidden>Generating</div>
+    </div>
+    <div class="columns" id="content">
+      <div id="verticalText">Cryptoart.com</div>
+      <div class="Aligner-item">
+        <div class= "secretKey" id="secret3">Generating...</div>
+      </div>
+    </div>
+    <div class="columns" id="rightThing">
+      <div class="Aligner-item2">
+        <h5>Private Key</h5>
+        <div id="secret_qr3"></div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="columns leftThing">
+      <div class="Aligner-item"><div id="public_qr4"></div></div>
+      <div id="public4" hidden>Generating</div>
+    </div>
+    <div class="columns" id="content">
+      <div id="verticalText">Cryptoart.com</div>
+      <div class="Aligner-item">
+        <div class= "secretKey" id="secret4">Generating...</div>
+      </div>
+    </div>
+    <div class="columns" id="rightThing">
+      <div class="Aligner-item2">
+        <h5>Private Key</h5>
+        <div id="secret_qr4"></div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="columns leftThing">
+      <div class="Aligner-item"><div id="public_qr5"></div></div>
+      <div id="public5" hidden>Generating</div>
+    </div>
+    <div class="columns" id="content">
+      <div id="verticalText">Cryptoart.com</div>
+      <div class="Aligner-item">
+        <div class= "secretKey" id="secret5">Generating...</div>
+      </div>
+    </div>
+    <div class="columns" id="rightThing">
+      <div class="Aligner-item2">
+        <h5>Private Key</h5>
+        <div id="secret_qr5"></div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="columns leftThing">
+      <div class="Aligner-item"><div id="public_qr6"></div></div>
+      <div id="public6" hidden>Generating</div>
+    </div>
+    <div class="columns" id="content">
+      <div id="verticalText">Cryptoart.com</div>
+      <div class="Aligner-item">
+        <div class= "secretKey" id="secret6">Generating...</div>
+      </div>
+    </div>
+    <div class="columns" id="rightThing">
+      <div class="Aligner-item2">
+        <h5>Private Key</h5>
+        <div id="secret_qr6"></div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="columns leftThing">
+      <div class="Aligner-item"><div id="public_qr7"></div></div>
+      <div id="public7" hidden>Generating</div>
+    </div>
+    <div class="columns" id="content">
+      <div id="verticalText">Cryptoart.com</div>
+      <div class="Aligner-item">
+        <div class= "secretKey" id="secret7">Generating...</div>
+      </div>
+    </div>
+    <div class="columns" id="rightThing">
+      <div class="Aligner-item2">
+        <h5>Private Key</h5>
+        <div id="secret_qr7"></div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="columns leftThing">
+      <div class="Aligner-item"><div id="public_qr8"></div></div>
+      <div id="public8" hidden>Generating</div>
+    </div>
+    <div class="columns" id="content">
+      <div id="verticalText">Cryptoart.com</div>
+      <div class="Aligner-item">
+        <div class= "secretKey" id="secret8">Generating...</div>
+      </div>
+    </div>
+    <div class="columns" id="rightThing">
+      <div class="Aligner-item2">
+        <h5>Private Key</h5>
+        <div id="secret_qr8"></div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="columns leftThing">
+      <div class="Aligner-item"><div id="public_qr9"></div></div>
+      <div id="public9" hidden>Generating</div>
+    </div>
+    <div class="columns" id="content">
+      <div id="verticalText">Cryptoart.com</div>
+      <div class="Aligner-item">
+        <div class= "secretKey" id="secret9">Generating...</div>
+      </div>
+    </div>
+    <div class="columns" id="rightThing">
+      <div class="Aligner-item2">
+        <h5>Private Key</h5>
+        <div id="secret_qr9"></div>
+      </div>
+    </div>
+  </div>
+</main>
+<script src="js/lodash.js"></script>
+<script src="js/ripple-0.22.0.js"></script>
+<script src="js/qrcode.js"></script>
+<script src="js/bitcoinjs-lib.js"></script>
+<script src="js/web3-eth-accounts.js"></script>
+<script src="js/bitcoincash-0.1.10.js"></script>
+<script src="js/stellar-base.js"></script>
+<script src="js/bitcore-lib-zcash.js"></script>
+<script>
+addEventListener("input", changeColor);
+function changeColor() {
+  var color = document.getElementById("color");
+  var qrColor = color.value;
+  return qrColor;
+}
+function generateWallet() {
+  var qrColor = changeColor();
+  var nbWallets = 10;
+  for(var i = 0; i < nbWallets; i++) {
+    var leftThing = document.getElementsByClassName("columns leftThing")[i];
+    leftThing.style.backgroundColor = qrColor;
+  }
+  
+  var coin = document.getElementById("coin").value;
+  if (coin == "Ripple") {
+    for(var i = 0; i < nbWallets; i++) {
+      var api = new ripple.RippleAPI();
+      var account = api.generateAddress();
+      document.getElementById("public" + i).textContent = account.address;
+      document.getElementById("secret" + i).textContent = account.secret;
+      document.getElementById("public_qr" + i).textContent = "";
+      document.getElementById("secret_qr" + i).textContent = "";
+      new QRCode(document.getElementById("public_qr" + i), {text: account.address, colorDark : qrColor, width: 96, height: 96, correctLevel : QRCode.CorrectLevel.M});
+      new QRCode(document.getElementById("secret_qr" + i), {text: account.secret, width: 96, height: 96, correctLevel : QRCode.CorrectLevel.M});
+      document.getElementById("main").style.display = "block";
+    }
+  } else if (coin == "Bitcoin") {
+    for(var i = 0; i < nbWallets; i++) {
+      var bitCoin = bitcoin.networks.bitcoin;
+      bitCoin.pubKeyHash = 0x00; bitCoin.wif = 0x80; bitCoin.scriptHash = 0x05;
+      var keyPair = bitcoin.ECPair.makeRandom();
+      var pubKey = keyPair.getAddress();
+      var privKey = keyPair.toWIF();
+      document.getElementById("public" + i).textContent = pubKey;
+      document.getElementById("secret" + i).textContent = privKey;
+      document.getElementById("public_qr" + i).textContent = "";
+      document.getElementById("secret_qr" + i).textContent = "";
+      new QRCode(document.getElementById("public_qr" + i), {text: pubKey, colorDark : qrColor, width: 96, height: 96, correctLevel : QRCode.CorrectLevel.M});
+      new QRCode(document.getElementById("secret_qr" + i), {text: privKey, width: 96, height: 96, correctLevel : QRCode.CorrectLevel.M});
+      document.getElementById("main").style.display = "block";
+    }
+  } else if (coin == "Bitcoin Cash") {
+    for(var i = 0; i < nbWallets; i++) {
+      var keyPair = new bch.PrivateKey();
+      var privKey = keyPair.toWIF();
+      var pubKey = keyPair.toAddress();
+      document.getElementById("public" + i).textContent = pubKey;
+      document.getElementById("secret" + i).textContent = privKey;
+      document.getElementById("public_qr" + i).textContent = "";
+      document.getElementById("secret_qr" + i).textContent = "";
+      new QRCode(document.getElementById("public_qr" + i), {text: pubKey, colorDark : qrColor, width: 96, height: 96, correctLevel : QRCode.CorrectLevel.M});
+      new QRCode(document.getElementById("secret_qr" + i), {text: privKey, width: 96, height: 96, correctLevel : QRCode.CorrectLevel.M});
+      document.getElementById("main").style.display = "block";
+    }
+  } else if (coin == "") {
+    document.getElementById("main").style.display = "none";
+  } else if (coin == "Stellar") {
+    for(var i = 0; i < nbWallets; i++) {
+      var keypair = StellarBase.Keypair.random();
+      document.getElementById("public" + i).textContent = keypair.publicKey();
+      document.getElementById("secret" + i).textContent = keypair.secret();
+      document.getElementById("public_qr" + i).textContent = "";
+      document.getElementById("secret_qr" + i).textContent = "";
+      new QRCode(document.getElementById("public_qr" + i), {text: keypair.publicKey(), colorDark : qrColor, width: 96, height: 96, correctLevel : QRCode.CorrectLevel.M});
+      new QRCode(document.getElementById("secret_qr" + i), {text: keypair.secret(), width: 96, height: 96, correctLevel : QRCode.CorrectLevel.M});
+      document.getElementById("main").style.display = "block";
+    }
+  } else if (coin == "Litecoin") {
+    for(var i = 0; i < nbWallets; i++) {
+      var litecoin = bitcoin.networks.litecoin;
+      var keyPair = bitcoin.ECPair.makeRandom({network:litecoin});
+      var pubKey = keyPair.getAddress();
+      var privKey = keyPair.toWIF();
+      document.getElementById("public" + i).textContent = pubKey;
+      document.getElementById("secret" + i).textContent = privKey;
+      document.getElementById("public_qr" + i).textContent = "";
+      document.getElementById("secret_qr" + i).textContent = "";
+      new QRCode(document.getElementById("public_qr" + i), {text: pubKey, colorDark : qrColor, width: 96, height: 96, correctLevel : QRCode.CorrectLevel.M});
+      new QRCode(document.getElementById("secret_qr" + i), {text: privKey, width: 96, height: 96, correctLevel : QRCode.CorrectLevel.M});
+      document.getElementById("main").style.display = "block";
+    }
+  } else if (coin == "Dash") {
+    for(var i = 0; i < nbWallets; i++) {
+      var dash = bitcoin.networks.bitcoin;
+      dash.pubKeyHash = 0x4c; dash.wif = 0xcc; dash.scriptHash = 0x10;
+      var keyPair = bitcoin.ECPair.makeRandom();
+      var pubKey = keyPair.getAddress();
+      var privKey = keyPair.toWIF();
+      document.getElementById("public" + i).textContent = pubKey;
+      document.getElementById("secret" + i).textContent = privKey;
+      document.getElementById("public_qr" + i).textContent = "";
+      document.getElementById("secret_qr" + i).textContent = "";
+      new QRCode(document.getElementById("public_qr" + i), {text: pubKey, colorDark : qrColor, width: 96, height: 96, correctLevel : QRCode.CorrectLevel.M});
+      new QRCode(document.getElementById("secret_qr" + i), {text: privKey, width: 96, height: 96, correctLevel : QRCode.CorrectLevel.M});
+      document.getElementById("main").style.display = "block";
+    }
+  } else if (coin == "Zcash") {
+    for(var i = 0; i < nbWallets; i++) {
+      var keyPair = new bitcore.PrivateKey();
+      var privKey = keyPair.toWIF();
+      var pubKey = keyPair.toAddress();
+      document.getElementById("public" + i).textContent = pubKey;
+      document.getElementById("secret" + i).textContent = privKey;
+      document.getElementById("public_qr" + i).textContent = "";
+      document.getElementById("secret_qr"+ i).textContent = "";
+      new QRCode(document.getElementById("public_qr" + i), {text: pubKey, colorDark : qrColor, width: 96, height: 96, correctLevel : QRCode.CorrectLevel.M});
+      new QRCode(document.getElementById("secret_qr" + i), {text: privKey, width: 96, height: 96, correctLevel : QRCode.CorrectLevel.M});
+      document.getElementById("main").style.display = "block";
+    }
+  } else if (coin == "Dogecoin") {
+    for(var i = 0; i < nbWallets; i++) {
+      var doge = bitcoin.networks.bitcoin;
+      doge.pubKeyHash = 0x1e; doge.wif = 0x9e; doge.scriptHash = 0x16;
+      var keyPair = bitcoin.ECPair.makeRandom();
+      var pubKey = keyPair.getAddress();
+      var privKey = keyPair.toWIF();
+      document.getElementById("public" + i).textContent = pubKey;
+      document.getElementById("secret" + i).textContent = privKey;
+      document.getElementById("public_qr" + i).textContent = "";
+      document.getElementById("secret_qr" + i).textContent = "";
+      new QRCode(document.getElementById("public_qr" + i), {text: pubKey, colorDark : qrColor, width: 96, height: 96, correctLevel : QRCode.CorrectLevel.M});
+      new QRCode(document.getElementById("secret_qr" + i), {text: privKey, width: 96, height: 96, correctLevel : QRCode.CorrectLevel.M});
+      document.getElementById("main").style.display = "block";
+    }
+  } else if (coin == "Qtum") {
+    for(var i = 0; i < nbWallets; i++) {
+      var qtum = bitcoin.networks.bitcoin;
+      qtum.pubKeyHash = 0x3A; qtum.wif = 0x80; qtum.scriptHash = 0x32;
+      var keyPair = bitcoin.ECPair.makeRandom();
+      var pubKey = keyPair.getAddress();
+      var privKey = keyPair.toWIF();
+      document.getElementById("public" + i).textContent = pubKey;
+      document.getElementById("secret" + i).textContent = privKey;
+      document.getElementById("public_qr" + i).textContent = "";
+      document.getElementById("secret_qr" + i).textContent = "";
+      new QRCode(document.getElementById("public_qr" + i), {text: pubKey, colorDark : qrColor, width: 96, height: 96, correctLevel : QRCode.CorrectLevel.M});
+      new QRCode(document.getElementById("secret_qr" + i), {text: privKey, width: 96, height: 96, correctLevel : QRCode.CorrectLevel.M});
+      document.getElementById("main").style.display = "block";
+    }
+  // ERC-20 tokens (Ethereum, EOS, etc...)
+  } else {
+    for(var i = 0; i < nbWallets; i++) {
+      var account = new Web3EthAccounts();
+      var keyPair = account.create();
+      var pubKey = JSON.parse(JSON.stringify(keyPair.address));
+      var privKey = JSON.parse(JSON.stringify(keyPair.privateKey));
+      document.getElementById("public" + i).textContent = pubKey;
+      document.getElementById("secret" + i).textContent = privKey;
+      document.getElementById("public_qr" + i).textContent = "";
+      document.getElementById("secret_qr" + i).textContent = "";
+      new QRCode(document.getElementById("public_qr" + i), {text: pubKey, colorDark : qrColor, width: 96, height: 96, correctLevel : QRCode.CorrectLevel.M});
+      new QRCode(document.getElementById("secret_qr" + i), {text: privKey, width: 96, height: 96, correctLevel : QRCode.CorrectLevel.M});
+      document.getElementById("main").style.display = "block";
+    }
+  }
+}
+</script>
+</body>
+</html>
