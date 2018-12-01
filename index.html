@@ -297,6 +297,9 @@ function generateWallet() {
   for(var i = 0; i < nbWallets; i++) {
     var leftColumn = document.getElementsByClassName("columns leftColumn")[i];
     leftColumn.style.backgroundColor = qrColor;
+    leftColumn.style.boxShadow = "inset 0 0 0 1000px " + qrColor;
+    leftColumn.style.mozBoxShadow = "inset 0 0 0 1000px " + qrColor;
+    leftColumn.style.webkitBoxShadow = "inset 0 0 0 1000px " + qrColor;
   }
   
   var coin = document.getElementById("coin").value;
