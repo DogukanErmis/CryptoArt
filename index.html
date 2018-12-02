@@ -7,35 +7,37 @@
 <meta name="keywords" content="minimal, reliable, fast, universal, paper, wallet, generator, offline, pwall, cryptoart, cryptocurrency">
 <link rel="shortcut icon" href="../favicon.ico">
 <style>
+.wrapper {
+  display: inline-flex;
+  flex-wrap: wrap;
+}
 .container {
-  min-height: 160px;
-  width: 480px;
+  min-height: 72pt;
+  width: 216pt;
   display: inline-flex;
   justify-content: center;
-  border: 3px solid black;
+  font-size: 0.8rem;
+  outline: 1px solid black;
 }
 .columns {
   min-height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex: 1;
+  width: 72pt;
+  height: 72pt;
 }
 .Aligner-item {
-  max-width: 60%;
   word-wrap: break-word;
-  font-size: 1.2rem;
-  min-height: 96px;
-  border: 3px solid white;
+  min-height: 42.75pt;
+  width: 42.75pt;
 }
 .Aligner-item2 {
   max-width: 60%;
   word-wrap: break-word;
-  font-size: 1.2rem;
-  min-height: 130px;
 }
 .columns.leftColumn {
-  background-color: black;
+  background-color: red;
   min-width: 33%;
 }
 #content {
@@ -43,22 +45,22 @@
 }
 .secretKey {
   font-family: monospace;
-  font-size: 1rem;
-  margin : 0;
-  min-height: 130px;
+  font-size: 0.6rem;
+  margin: 0;
 }
 #verticalText {
   width: 1%;
   transform: rotate(-90deg);
-  margin-right: 40px;
-  margin-top: 80px;
+  margin-right: 20px;
+  margin-top: 50px;
+  font-size: 0.6rem;
 }
 #rightColumn {
   min-width: 33%;
 }
 h5 {
   text-align: center;
-  margin: 0;
+  margin: -8pt 0 0 0;
 }
 label {
   display: inline-block;
@@ -69,35 +71,47 @@ input select {
   width: 200px;
   margin-bottom: 5px;
 }
+img {
+  max-width: 100%;
+  max-height: 100%;
+  outline: 2px solid white;
+}
+@media print{.noprint {display:none;}}
 </style>
 </head>
 <body>
-<label for="color">Select the color :</label><input id="color" name="color" type="color" autocomplete="off"><br>
-<label for="coin">Select your cryptocurrency :</label><select id="coin" onchange="generateWallet()" autocomplete="off">
-  <option selected="selected"></option>
-  <option>0x</option>
-  <option>Aeternity</option>
-  <option>Bitcoin</option>
-  <option>Bitcoin Cash</option>
-  <option>Dash</option>
-  <option>Dogecoin</option>
-  <option>Ethereum</option>
-  <option>EOS</option>
-  <option>Litecoin</option>
-  <option>Qtum</option>
-  <option>Ripple</option>
-  <option>Stellar</option>
-  <option>Tron</option>
-  <option>VeChain</option>
-  <option>Zcash</option>
-  <option>Zilliqa</option>
-</select><br>
-<div class="noprint"><button class="button button2" onclick="generateWallet()">Generate</button>
+<div class="noprint">
+  <label for="color">Select the color :</label><input id="color" name="color" type="color" autocomplete="off"><br>
+  <label for="coin">Select your cryptocurrency :</label><select id="coin" onchange="generateWallet()" autocomplete="off">
+    <option selected="selected"></option>
+    <option>0x</option>
+    <option>Aeternity</option>
+    <option>Bitcoin</option>
+    <option>Bitcoin Cash</option>
+    <option>Dash</option>
+    <option>Dogecoin</option>
+    <option>Ethereum</option>
+    <option>EOS</option>
+    <option>Litecoin</option>
+    <option>Qtum</option>
+    <option>Ripple</option>
+    <option>Stellar</option>
+    <option>Tron</option>
+    <option>VeChain</option>
+    <option>Zcash</option>
+    <option>Zilliqa</option>
+  </select><br>
+  <button onclick="generateWallet()">Generate</button>
+  <button onclick="window.print()">Print</button>
+</div>
 <br>
 <main id="main" style="display:none">
+<div class="wrapper">
   <div class="container">
     <div class="columns leftColumn">
-      <div class="Aligner-item"><div id="public_qr0"></div></div>
+      <div class="Aligner-item">
+        <div id="public_qr0"></div>
+      </div>
       <div id="public0" hidden>Generating</div>
     </div>
     <div class="columns" id="content">
@@ -275,6 +289,151 @@ input select {
       </div>
     </div>
   </div>
+  <div class="container">
+    <div class="columns leftColumn">
+      <div class="Aligner-item"><div id="public_qr10"></div></div>
+      <div id="public10" hidden>Generating</div>
+    </div>
+    <div class="columns" id="content">
+      <div id="verticalText">Cryptoart.com</div>
+      <div class="Aligner-item">
+        <div class= "secretKey" id="secret10">Generating...</div>
+      </div>
+    </div>
+    <div class="columns" id="rightColumn">
+      <div class="Aligner-item2">
+        <h5>Private Key</h5>
+        <div id="secret_qr10"></div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="columns leftColumn">
+      <div class="Aligner-item"><div id="public_qr11"></div></div>
+      <div id="public11" hidden>Generating</div>
+    </div>
+    <div class="columns" id="content">
+      <div id="verticalText">Cryptoart.com</div>
+      <div class="Aligner-item">
+        <div class= "secretKey" id="secret11">Generating...</div>
+      </div>
+    </div>
+    <div class="columns" id="rightColumn">
+      <div class="Aligner-item2">
+        <h5>Private Key</h5>
+        <div id="secret_qr11"></div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="columns leftColumn">
+      <div class="Aligner-item"><div id="public_qr12"></div></div>
+      <div id="public12" hidden>Generating</div>
+    </div>
+    <div class="columns" id="content">
+      <div id="verticalText">Cryptoart.com</div>
+      <div class="Aligner-item">
+        <div class= "secretKey" id="secret12">Generating...</div>
+      </div>
+    </div>
+    <div class="columns" id="rightColumn">
+      <div class="Aligner-item2">
+        <h5>Private Key</h5>
+        <div id="secret_qr12"></div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="columns leftColumn">
+      <div class="Aligner-item"><div id="public_qr13"></div></div>
+      <div id="public13" hidden>Generating</div>
+    </div>
+    <div class="columns" id="content">
+      <div id="verticalText">Cryptoart.com</div>
+      <div class="Aligner-item">
+        <div class= "secretKey" id="secret13">Generating...</div>
+      </div>
+    </div>
+    <div class="columns" id="rightColumn">
+      <div class="Aligner-item2">
+        <h5>Private Key</h5>
+        <div id="secret_qr13"></div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="columns leftColumn">
+      <div class="Aligner-item"><div id="public_qr14"></div></div>
+      <div id="public14" hidden>Generating</div>
+    </div>
+    <div class="columns" id="content">
+      <div id="verticalText">Cryptoart.com</div>
+      <div class="Aligner-item">
+        <div class= "secretKey" id="secret14">Generating...</div>
+      </div>
+    </div>
+    <div class="columns" id="rightColumn">
+      <div class="Aligner-item2">
+        <h5>Private Key</h5>
+        <div id="secret_qr14"></div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="columns leftColumn">
+      <div class="Aligner-item"><div id="public_qr15"></div></div>
+      <div id="public15" hidden>Generating</div>
+    </div>
+    <div class="columns" id="content">
+      <div id="verticalText">Cryptoart.com</div>
+      <div class="Aligner-item">
+        <div class= "secretKey" id="secret15">Generating...</div>
+      </div>
+    </div>
+    <div class="columns" id="rightColumn">
+      <div class="Aligner-item2">
+        <h5>Private Key</h5>
+        <div id="secret_qr15"></div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="columns leftColumn">
+      <div class="Aligner-item"><div id="public_qr16"></div></div>
+      <div id="public16" hidden>Generating</div>
+    </div>
+    <div class="columns" id="content">
+      <div id="verticalText">Cryptoart.com</div>
+      <div class="Aligner-item">
+        <div class= "secretKey" id="secret16">Generating...</div>
+      </div>
+    </div>
+    <div class="columns" id="rightColumn">
+      <div class="Aligner-item2">
+        <h5>Private Key</h5>
+        <div id="secret_qr16"></div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="columns leftColumn">
+      <div class="Aligner-item"><div id="public_qr17"></div></div>
+      <div id="public17" hidden>Generating</div>
+    </div>
+    <div class="columns" id="content">
+      <div id="verticalText">Cryptoart.com</div>
+      <div class="Aligner-item">
+        <div class= "secretKey" id="secret17">Generating...</div>
+      </div>
+    </div>
+    <div class="columns" id="rightColumn">
+      <div class="Aligner-item2">
+        <h5>Private Key</h5>
+        <div id="secret_qr17"></div>
+      </div>
+    </div>
+  </div>
+</div>
 </main>
 <script src="js/lodash.js"></script>
 <script src="js/ripple-0.22.0.js"></script>
@@ -293,7 +452,7 @@ function changeColor() {
 }
 function generateWallet() {
   var qrColor = changeColor();
-  var nbWallets = 10;
+  var nbWallets = 18;
   for(var i = 0; i < nbWallets; i++) {
     var leftColumn = document.getElementsByClassName("columns leftColumn")[i];
     leftColumn.style.backgroundColor = qrColor;
@@ -311,8 +470,8 @@ function generateWallet() {
       document.getElementById("secret" + i).textContent = account.secret;
       document.getElementById("public_qr" + i).textContent = "";
       document.getElementById("secret_qr" + i).textContent = "";
-      new QRCode(document.getElementById("public_qr" + i), {text: account.address, colorDark : qrColor, width: 96, height: 96, correctLevel : QRCode.CorrectLevel.M});
-      new QRCode(document.getElementById("secret_qr" + i), {text: account.secret, width: 96, height: 96, correctLevel : QRCode.CorrectLevel.M});
+      new QRCode(document.getElementById("public_qr" + i), {text: account.address, colorDark : qrColor, width: 55, height: 55, correctLevel : QRCode.CorrectLevel.M});
+      new QRCode(document.getElementById("secret_qr" + i), {text: account.secret, width: 55, height: 55, correctLevel : QRCode.CorrectLevel.M});
       document.getElementById("main").style.display = "block";
     }
   } else if (coin == "Bitcoin") {
@@ -326,8 +485,8 @@ function generateWallet() {
       document.getElementById("secret" + i).textContent = privKey;
       document.getElementById("public_qr" + i).textContent = "";
       document.getElementById("secret_qr" + i).textContent = "";
-      new QRCode(document.getElementById("public_qr" + i), {text: pubKey, colorDark : qrColor, width: 96, height: 96, correctLevel : QRCode.CorrectLevel.M});
-      new QRCode(document.getElementById("secret_qr" + i), {text: privKey, width: 96, height: 96, correctLevel : QRCode.CorrectLevel.M});
+      new QRCode(document.getElementById("public_qr" + i), {text: pubKey, colorDark : qrColor, width: 55, height: 55, correctLevel : QRCode.CorrectLevel.M});
+      new QRCode(document.getElementById("secret_qr" + i), {text: privKey, width: 55, height: 55, correctLevel : QRCode.CorrectLevel.M});
       document.getElementById("main").style.display = "block";
     }
   } else if (coin == "Bitcoin Cash") {
@@ -339,8 +498,8 @@ function generateWallet() {
       document.getElementById("secret" + i).textContent = privKey;
       document.getElementById("public_qr" + i).textContent = "";
       document.getElementById("secret_qr" + i).textContent = "";
-      new QRCode(document.getElementById("public_qr" + i), {text: pubKey, colorDark : qrColor, width: 96, height: 96, correctLevel : QRCode.CorrectLevel.M});
-      new QRCode(document.getElementById("secret_qr" + i), {text: privKey, width: 96, height: 96, correctLevel : QRCode.CorrectLevel.M});
+      new QRCode(document.getElementById("public_qr" + i), {text: pubKey, colorDark : qrColor, width: 55, height: 55, correctLevel : QRCode.CorrectLevel.M});
+      new QRCode(document.getElementById("secret_qr" + i), {text: privKey, width: 55, height: 55, correctLevel : QRCode.CorrectLevel.M});
       document.getElementById("main").style.display = "block";
     }
   } else if (coin == "") {
@@ -352,8 +511,8 @@ function generateWallet() {
       document.getElementById("secret" + i).textContent = keypair.secret();
       document.getElementById("public_qr" + i).textContent = "";
       document.getElementById("secret_qr" + i).textContent = "";
-      new QRCode(document.getElementById("public_qr" + i), {text: keypair.publicKey(), colorDark : qrColor, width: 96, height: 96, correctLevel : QRCode.CorrectLevel.M});
-      new QRCode(document.getElementById("secret_qr" + i), {text: keypair.secret(), width: 96, height: 96, correctLevel : QRCode.CorrectLevel.M});
+      new QRCode(document.getElementById("public_qr" + i), {text: keypair.publicKey(), colorDark : qrColor, width: 55, height: 55, correctLevel : QRCode.CorrectLevel.M});
+      new QRCode(document.getElementById("secret_qr" + i), {text: keypair.secret(), width: 55, height: 55, correctLevel : QRCode.CorrectLevel.M});
       document.getElementById("main").style.display = "block";
     }
   } else if (coin == "Litecoin") {
@@ -366,8 +525,8 @@ function generateWallet() {
       document.getElementById("secret" + i).textContent = privKey;
       document.getElementById("public_qr" + i).textContent = "";
       document.getElementById("secret_qr" + i).textContent = "";
-      new QRCode(document.getElementById("public_qr" + i), {text: pubKey, colorDark : qrColor, width: 96, height: 96, correctLevel : QRCode.CorrectLevel.M});
-      new QRCode(document.getElementById("secret_qr" + i), {text: privKey, width: 96, height: 96, correctLevel : QRCode.CorrectLevel.M});
+      new QRCode(document.getElementById("public_qr" + i), {text: pubKey, colorDark : qrColor, width: 55, height: 55, correctLevel : QRCode.CorrectLevel.M});
+      new QRCode(document.getElementById("secret_qr" + i), {text: privKey, width: 55, height: 55, correctLevel : QRCode.CorrectLevel.M});
       document.getElementById("main").style.display = "block";
     }
   } else if (coin == "Dash") {
@@ -381,8 +540,8 @@ function generateWallet() {
       document.getElementById("secret" + i).textContent = privKey;
       document.getElementById("public_qr" + i).textContent = "";
       document.getElementById("secret_qr" + i).textContent = "";
-      new QRCode(document.getElementById("public_qr" + i), {text: pubKey, colorDark : qrColor, width: 96, height: 96, correctLevel : QRCode.CorrectLevel.M});
-      new QRCode(document.getElementById("secret_qr" + i), {text: privKey, width: 96, height: 96, correctLevel : QRCode.CorrectLevel.M});
+      new QRCode(document.getElementById("public_qr" + i), {text: pubKey, colorDark : qrColor, width: 55, height: 55, correctLevel : QRCode.CorrectLevel.M});
+      new QRCode(document.getElementById("secret_qr" + i), {text: privKey, width: 55, height: 55, correctLevel : QRCode.CorrectLevel.M});
       document.getElementById("main").style.display = "block";
     }
   } else if (coin == "Zcash") {
@@ -394,8 +553,8 @@ function generateWallet() {
       document.getElementById("secret" + i).textContent = privKey;
       document.getElementById("public_qr" + i).textContent = "";
       document.getElementById("secret_qr"+ i).textContent = "";
-      new QRCode(document.getElementById("public_qr" + i), {text: pubKey, colorDark : qrColor, width: 96, height: 96, correctLevel : QRCode.CorrectLevel.M});
-      new QRCode(document.getElementById("secret_qr" + i), {text: privKey, width: 96, height: 96, correctLevel : QRCode.CorrectLevel.M});
+      new QRCode(document.getElementById("public_qr" + i), {text: pubKey, colorDark : qrColor, width: 55, height: 55, correctLevel : QRCode.CorrectLevel.M});
+      new QRCode(document.getElementById("secret_qr" + i), {text: privKey, width: 55, height: 55, correctLevel : QRCode.CorrectLevel.M});
       document.getElementById("main").style.display = "block";
     }
   } else if (coin == "Dogecoin") {
@@ -409,8 +568,8 @@ function generateWallet() {
       document.getElementById("secret" + i).textContent = privKey;
       document.getElementById("public_qr" + i).textContent = "";
       document.getElementById("secret_qr" + i).textContent = "";
-      new QRCode(document.getElementById("public_qr" + i), {text: pubKey, colorDark : qrColor, width: 96, height: 96, correctLevel : QRCode.CorrectLevel.M});
-      new QRCode(document.getElementById("secret_qr" + i), {text: privKey, width: 96, height: 96, correctLevel : QRCode.CorrectLevel.M});
+      new QRCode(document.getElementById("public_qr" + i), {text: pubKey, colorDark : qrColor, width: 55, height: 55, correctLevel : QRCode.CorrectLevel.M});
+      new QRCode(document.getElementById("secret_qr" + i), {text: privKey, width: 55, height: 55, correctLevel : QRCode.CorrectLevel.M});
       document.getElementById("main").style.display = "block";
     }
   } else if (coin == "Qtum") {
@@ -424,8 +583,8 @@ function generateWallet() {
       document.getElementById("secret" + i).textContent = privKey;
       document.getElementById("public_qr" + i).textContent = "";
       document.getElementById("secret_qr" + i).textContent = "";
-      new QRCode(document.getElementById("public_qr" + i), {text: pubKey, colorDark : qrColor, width: 96, height: 96, correctLevel : QRCode.CorrectLevel.M});
-      new QRCode(document.getElementById("secret_qr" + i), {text: privKey, width: 96, height: 96, correctLevel : QRCode.CorrectLevel.M});
+      new QRCode(document.getElementById("public_qr" + i), {text: pubKey, colorDark : qrColor, width: 55, height: 55, correctLevel : QRCode.CorrectLevel.M});
+      new QRCode(document.getElementById("secret_qr" + i), {text: privKey, width: 55, height: 55, correctLevel : QRCode.CorrectLevel.M});
       document.getElementById("main").style.display = "block";
     }
   // ERC-20 tokens (Ethereum, EOS, etc...)
@@ -439,8 +598,8 @@ function generateWallet() {
       document.getElementById("secret" + i).textContent = privKey;
       document.getElementById("public_qr" + i).textContent = "";
       document.getElementById("secret_qr" + i).textContent = "";
-      new QRCode(document.getElementById("public_qr" + i), {text: pubKey, colorDark : qrColor, width: 96, height: 96, correctLevel : QRCode.CorrectLevel.M});
-      new QRCode(document.getElementById("secret_qr" + i), {text: privKey, width: 96, height: 96, correctLevel : QRCode.CorrectLevel.M});
+      new QRCode(document.getElementById("public_qr" + i), {text: pubKey, colorDark : qrColor, width: 55, height: 55, correctLevel : QRCode.CorrectLevel.M});
+      new QRCode(document.getElementById("secret_qr" + i), {text: privKey, width: 55, height: 55, correctLevel : QRCode.CorrectLevel.M});
       document.getElementById("main").style.display = "block";
     }
   }
